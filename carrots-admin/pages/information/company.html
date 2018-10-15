@@ -1,0 +1,178 @@
+<div class="company font14">
+    <!--搜索模块开始-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label ">公司名称</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="vm.params.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">公司行业</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.industry">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key, val) in vm.industryList"
+                                            value="{{key}}">
+                                        {{val}}
+                                    </option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">产品名称</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="vm.params.product">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">融资规模</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.financing">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key, val) in vm.financing"
+                                            value="{{key}}">
+                                        {{val}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">认证状态</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.approved">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key, val) in vm.approved"
+                                            value="{{key}}">
+                                        {{val}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">冻结状态</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.freezed">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key, val) in vm.freezed"
+                                            value="{{key}}">
+                                        {{val}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">地&emsp;&emsp;区</label>
+                            <!--选择地区自定义指令-->
+                            <select-region province="vm.params.province"
+                                           city="vm.params.city"
+                                           county="vm.params.county"
+                                           tips="全部">
+                            </select-region>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <button class="btn btn-danger" type="button" ng-click="vm.clear()">清空</button>
+                        <button class="btn btn-success" type="button" ng-click="vm.search()">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索模块结束-->
+    <!--公司列表开始-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>公司列表</strong>
+            <button class="btn btn-success btn-xs pull-right"
+                    ui-sref="home.companyDetails"
+                    ng-disabled="!vm.operationPower[0].select">
+                +新增公司
+            </button>
+        </div>
+        <p ng-if="vm.companyList.length === 0" class="text-center" style="margin-top: 10px;font-size: 14px">暂无任何数据</p>
+        <div class="panel-body table-responsive" ng-if="vm.companyList.length !== 0">
+            <table class="table table-border table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>公司名称</th>
+                    <th>公司行业</th>
+                    <th>地区</th>
+                    <th>融资规模</th>
+                    <th>认证状态</th>
+                    <th>冻结状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in vm.companyList track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{x.name}}</td>
+                    <td>{{x.industryList[0] | industryList}}</td>
+                    <td>
+                        <div>{{x.province | region}}</div>
+                        <div ng-if="!x.directCity">{{x.city | region}}</div>
+                        <div>{{x.county | region}}</div>
+                    </td>
+                    <td>{{x.financing | financing}}</td>
+                    <td>{{x.approved | approved}}</td>
+                    <td>{{x.freezed | freezed}}</td>
+                    <td>
+                        <button class="btn btn-sm text-blue"
+                                ui-sref="home.job({companyId:x.id,companyName:x.name})">
+                            职位
+                        </button>
+                        <button class="btn btn-sm text-blue"
+                                ng-click="vm.approveOrFreeze(x.id,1,x.approved)">
+                            {{x.approved | operationApproved}}
+                        </button>
+                        <button class="btn btn-sm text-blue"
+                                ui-sref="home.companyDetails({id:x.id})"
+                                ng-disabled="!vm.operationPower[1].select">
+                            编辑
+                        </button>
+                        <button class="btn btn-sm text-red"
+                                ng-click="vm.approveOrFreeze(x.id,0,x.freezed)">
+                            {{x.freezed | operationFreezed}}
+                        </button>
+                        <button class="btn btn-sm text-red"
+                                ng-click="vm.delete(x.id)"
+                                ng-disabled="!vm.operationPower[2].select">
+                            删除
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--公司列表结束-->
+    <!--分页模块开始-->
+    <pagination size="vm.params.size" total="vm.total" page="vm.params.page"></pagination>
+    <!--分页模块结束-->
+</div>

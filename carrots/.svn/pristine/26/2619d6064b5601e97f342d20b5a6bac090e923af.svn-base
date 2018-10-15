@@ -1,4 +1,0 @@
-angular.module('myApp')
-    .controller('homeCtrl', function ($scope,$state,$rootScope) {
-        $scope.state = $state;
-    });

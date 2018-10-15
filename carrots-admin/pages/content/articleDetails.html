@@ -1,0 +1,66 @@
+<div class="articleDetails font14">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>{{vm.detailsTitle}}</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="detailsForm">
+                <div class="form-group">
+                    <label class="control-label col-md-2"><span class="text-red">*&nbsp;</span>标题名称</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" ng-model="vm.data.title" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2"><span class="text-red">*&nbsp;</span>类&emsp;&emsp;型</label>
+                    <div class="col-md-2">
+                        <select class="form-control" ng-model="vm.data.type" required>
+                            <option value="">请选择</option>
+                            <option ng-repeat="(key,val) in vm.bannerTypes track by $index"
+                                    value="{{key}}">
+                                {{val}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="vm.data.type==='3'">
+                    <label class="control-label col-md-2"><span class="text-red">*&nbsp;</span>行&emsp;&emsp;业</label>
+                    <div class="col-md-2">
+                        <select class="form-control" ng-model="vm.data.industry" required>
+                            <option value="">请选择</option>
+                            <option ng-repeat="(key,val) in vm.industryList track by $index"
+                                    value="{{key}}">
+                                {{val}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-if="vm.data.type!=='3'">
+                    <label class="control-label col-md-2"><span class="text-red">*&nbsp;</span>跳转链接</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" ng-model="vm.data.url" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label"><span class="text-red">*&nbsp;</span>配&emsp;&emsp;图</label>
+                    <!--上传图片自定义指令-->
+                    <file-upload img-url="vm.data.img"></file-upload>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button class="btn btn-success"
+                                ng-repeat="(key,val) in  vm.statusBtn track by $index"
+                                ng-click="vm.submitChange(key)"
+                                style="margin-right: 5px"
+                                ng-disabled="detailsForm.$invalid||!vm.data.img"
+                                type="submit">
+                            {{val}}
+                        </button>
+                        <button class="btn btn-default pull-right" ui-sref="home.article">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

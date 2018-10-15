@@ -1,0 +1,129 @@
+<div class="articleList font14">
+    <!--搜索模块开始-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">标&emsp;&emsp;题</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="vm.params.title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">创&ensp;建&ensp;者</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="vm.params.author">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">类&emsp;&emsp;型</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.type">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key,val) in vm.bannerTypes" value="{{key}}">{{val}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">状&emsp;&emsp;态</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.status">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key,val) in vm.lineStatus" value="{{key}}">{{val}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--日期选择自定义指令-->
+                    <date-picker start-at="vm.params.startAt"
+                                 end-at="vm.params.endAt">
+                    </date-picker>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <button class="btn btn-danger" type="button" ng-click="vm.clear()">清空</button>
+                        <button class="btn btn-success" type="button" ng-click="vm.search()">搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--搜索模块结束-->
+    <!--文章列表开始-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>Article列表</strong>
+            <button class="btn btn-success btn-xs pull-right"
+                    ui-sref="home.articleDetails"
+                    ng-disabled="!vm.operationPower[0].select">
+                +新增Article
+            </button>
+        </div>
+        <p ng-if="vm.articleList.length === 0" class="text-center" style="margin-top: 10px;font-size: 14px">暂无任何数据</p>
+        <div class="panel-body table-responsive" ng-if="vm.articleList.length !== 0">
+            <table class="table table-border table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>图片</th>
+                    <th>标题</th>
+                    <th>类型</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                    <th>创建者</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in vm.articleList track by $index">
+                    <td>{{$index+1}}</td>
+                    <td><img src="{{x.img}}" alt="缩略图" style=" width: 80px;height: 80px"></td>
+                    <td>{{x.title}}</td>
+                    <td>{{x.type | bannerTypes}}</td>
+                    <td>
+                        <div>{{x.createAt | date:"yyyy-MM-dd"}}</div>
+                        <div>{{x.createAt | date:"hh:mm:ss"}}</div>
+                    </td>
+                    <td>
+                        <div>{{x.updateAt | date:"yyyy-MM-dd"}}</div>
+                        <div>{{x.updateAt | date:"hh:mm:ss"}}</div>
+                    </td>
+                    <td>{{x.author}}</td>
+                    <td>{{x.status | lineStatus}}</td>
+                    <td>
+                        <button class="btn btn-sm text-blue"
+                                ng-click="vm.changeStatus(x.id,x.status)">
+                            {{x.status | operationLineStatus}}
+                        </button>
+                        <button class="btn btn-sm text-blue"
+                                ui-sref="home.articleDetails({id:x.id})"
+                                ng-disabled="!vm.operationPower[1].select">
+                            编辑
+                        </button>
+                        <button class="btn btn-sm text-blue"
+                                ng-click="vm.delete(x.id)"
+                                ng-disabled="!vm.operationPower[2].select">
+                            删除
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--文章列表结束-->
+    <!--分页模块开始-->
+    <pagination size="vm.params.size" total="vm.total" page="vm.params.page"></pagination>
+    <!--分页模块结束-->
+</div>

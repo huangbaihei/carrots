@@ -1,0 +1,125 @@
+a,
+a:hover,
+a:visited,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    outline: 0 !important;
+    background: inherit;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-appearance: none !important;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.font14 {
+    font-size: 1.4rem;
+}
+
+.mg-bottom-15 {
+    margin-bottom: 15px;
+}
+
+.mg-top-15 {
+    margin-top: 15px;
+}
+
+.mg-right-15 {
+    margin-right: 15px;
+}
+
+.mg-left-15 {
+    margin-left: 15px;
+}
+
+.mg-right-10 {
+    margin-right: 10px;
+}
+
+.mg-left-5 {
+    margin-left: 5px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.table-border {
+    border: 1px solid #eee;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+th {
+    font-weight: 700;
+}
+
+.padding-0 {
+    padding: 0;
+}
+
+.pd-left-50 {
+    padding-left: 50px;
+}
+
+.pd-top-15 {
+    padding-top: 15px;
+}
+
+.m-c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-backdrop.am-fade {
+    opacity: .5;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+
+@media screen and  (max-width: 990px) {
+    .xs-sm-mg-bottom-10 {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and  (min-width: 992px) {
+    .companyDetails .selectRegion {
+        width: 58.33333333%;
+    }
+    .articleDetails .fileUpload{
+        width: 66.66666666%;
+    }
+    .company .select-province{
+        width: 40%;
+    }
+}
+.text-red {
+    color: red;
+}
+.text-blue{
+    color: #337ab7;
+}
+.c-pointer{
+    cursor: pointer;
+}
+
+

@@ -1,0 +1,33 @@
+<div class="col-md-10 selectRegion">
+    <div class="row">
+        <div class="col-md-4 xs-sm-mg-bottom-10" ng-class="{'select-province':!province}">
+            <select class="form-control" ng-model="province" ng-change="checkDirectCity()">
+                <option value="">{{tips}}</option>
+                <option ng-repeat="(key, val) in region"
+                        value="{{key}}">
+                    {{val.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-4 xs-sm-mg-bottom-10"
+             ng-if="!region[province].directCity&&province">
+            <select class="form-control" ng-model="$parent.city" ng-change="refreshCounty()">
+                <option value="">请选择城市</option>
+                <option ng-repeat="(key, val) in region[province].children"
+                        value="{{key}}">
+                    {{val.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-md-4 xs-sm-mg-bottom-10"
+             ng-if="city">
+            <select class="form-control" ng-model="$parent.county">
+                <option value="">请选择地区</option>
+                <option ng-repeat="(key, val) in region[province].children[city].children"
+                        value="{{key}}">
+                    {{val.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>

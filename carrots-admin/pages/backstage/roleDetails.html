@@ -1,0 +1,61 @@
+<div class="roleDetails font14">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>{{vm.title}}</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="detailsForm">
+                <div class="form-group">
+                    <label class="control-label col-md-2">角色名</label>
+                    <div class="col-md-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="vm.role.name"
+                               placeholder="请输入角色名"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">权&emsp;限</label>
+                    <div class="col-md-8">
+                        <label ng-click="vm.all(vm.allSelect)"><input type="checkbox" ng-model="vm.allSelect">全选/全不选</label>
+                        <div class="mg-left-15"
+                             ng-repeat="x in vm.parentModule track by $index">
+                            <label  ng-click="vm.parent(x.select,x.id)">
+                                <input type="checkbox" ng-model="x.select">
+                                {{x.name}}
+                            </label>
+                            <div class="mg-left-15"
+                                 style="overflow: hidden"
+                                 ng-repeat="y in x.childModule track by $index">
+                                <label class="pull-left mg-right-10" ng-click="vm.child(y.select,y.id)">
+                                    <input type="checkbox" ng-model="y.select">
+                                    {{y.name}}
+                                </label>
+                                <label class="pull-left mg-left-5"
+                                       ng-repeat="z in y.operationPower track by $index"
+                                       ng-click="vm.operation()">
+                                    <input type="checkbox" ng-model="z.select" >
+                                    {{z.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button class="btn btn-default pull-right" ui-sref="home.role">取消</button>
+                        <button class="btn btn-success pull-right"
+                                ng-click="vm.save()"
+                                style="margin-right: 5px"
+                                ng-disabled="detailsForm.$invalid"
+                                type="submit">
+                            保存
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

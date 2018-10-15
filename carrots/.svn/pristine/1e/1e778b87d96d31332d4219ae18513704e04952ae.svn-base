@@ -1,8 +1,0 @@
-.carrot-top {
-  z-index: 100;
-  padding-bottom: 20px;
-  background-color: #f7f7f7; }
-  .carrot-top .pd-0 {
-    padding: 0; }
-
-/*# sourceMappingURL=desk.css.map */

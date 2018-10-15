@@ -1,0 +1,171 @@
+<div class="job font14">
+    <div class="panel panel-default" ng-if="!vm.companyId">
+        <form class="form-horizontal">
+            <div class="panel-body">
+                <div class="row pd-bottom-2">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">在招公司</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" ng-model="vm.params.companyName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">职位名称</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" ng-model="vm.params.name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">职位类别</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.category">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="x in vm.categoryData track by $index"
+                                            value="{{x.id}}">
+                                        {{x.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row pd-bottom-2">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">学历要求</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.education">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key,val) in vm.education" value="{{key}}">{{val}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">工作经验</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.experience">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key,val) in vm.experience" value="{{key}}">{{val}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">薪&emsp;&emsp;资</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.compensation">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key,val) in vm.compensation" value="{{key}}">{{val}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pd-bottom-2">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-4">状&emsp;&emsp;态</label>
+                            <div class="col-md-8">
+                                <select class="form-control" ng-model="vm.params.status">
+                                    <option value="">全部</option>
+                                    <option ng-repeat="(key,val) in vm.status" value="{{key}}">{{val}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--日期选择自定义指令-->
+                    <date-picker start-at="vm.params.startAt"
+                                 end-at="vm.params.endAt">
+                    </date-picker>
+                </div>
+                <div class="row pd-bottom-2">
+                    <div class="col-md-4 pull-right text-right">
+                        <div>
+                            <button type="button" class="btn btn-danger" ng-click="vm.clear()">清空</button>
+                            <button type="button" class="btn btn-success" ng-click="vm.search()">搜索</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>{{vm.listTitle}}</strong>
+            <div class="pull-right" ng-if="vm.companyId">
+                <button class="btn btn-xs btn-default" ui-sref="home.company">返回公司列表</button>
+                <button type="button"
+                        class="btn btn-xs btn-success"
+                        ui-sref="home.jobDetails({companyId:vm.companyId,companyName:vm.params.companyName})"
+                        ng-disabled="!vm.operationPower[0].select">
+                    +新增职位
+                </button>
+            </div>
+        </div>
+        <p ng-if="vm.JobList.length === 0" class="text-center" style="margin-top: 10px;font-size: 14px">暂无任何数据</p>
+        <div class="panel-body table-responsive" ng-if="vm.JobList.length !== 0">
+            <table class="table table-border table-striped">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>在招公司</th>
+                    <th>职位名称</th>
+                    <th>职位类别</th>
+                    <th>薪资</th>
+                    <th>学历要求</th>
+                    <th>工作经验</th>
+                    <th>发布时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in vm.JobList track by $index">
+                    <td>{{$index+1}}</td>
+                    <td>{{x.companyName}}</td>
+                    <td>{{x.name}}</td>
+                    <td>{{x.category | category}}</td>
+                    <td>{{x.compensation | compensation}}</td>
+                    <td>{{x.education | education}}</td>
+                    <td>{{x.experience | experience}}</td>
+                    <td>{{x.updateAt | date:'yyyy-MM-dd'}}</td>
+                    <td>{{x.status | status}}</td>
+                    <td>
+                        <button type="button"
+                                class="btn btn-sm text-blue"
+                                ng-click="vm.changeStatus(x.id,x.status)">
+                            {{x.status | operationStatus}}
+                        </button>
+                        <button type="button"
+                                class="btn btn-sm text-blue"
+                                ng-click="vm.edit(x.id,x.companyName,x.companyId)"
+                                ui-sref="home.jobDetails({id:x.id,companyName:x.companyName,companyId:x.companyId})"
+                                ng-disabled="!vm.operationPower[1].select">
+                            编辑
+                        </button>
+                        <button type="button"
+                                class="btn btn-sm text-blue"
+                                ng-click="vm.delete(x.id)"
+                                ng-disabled="!vm.operationPower[2].select">
+                            删除
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--分页模块开始-->
+    <pagination size="vm.params.size" total="vm.total" page="vm.params.page"></pagination>
+    <!--分页模块结束-->
+</div>

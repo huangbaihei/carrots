@@ -1,6 +1,0 @@
-angular.module('myApp')
-    .factory('commonUtil',function () {
-        return{
-
-        }
-    });

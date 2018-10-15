@@ -1,0 +1,64 @@
+<div class="col-md-10 padding-0 fileUpload">
+    <div class="col-md-12">
+        <label class="btn btn-primary">
+            选择文件
+            <input nv-file-select
+                   uploader="uploader"
+                   type="file"
+                   style="display: none">
+        </label>
+    </div>
+    <div class="col-md-12">
+        <img ng-src="{{imgUrl}}"
+             alt="配图预览"
+             class="img-responsive"
+             ng-show="imgUrl">
+    </div>
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <th>图片名</th>
+                <th>文件大小</th>
+                <th>进度</th>
+                <th>状态</th>
+                <th>操作</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in uploader.queue track by $index" ng-if="$first">
+                    <td>{{x.file.name}}</td>
+                    <td ng-show="uploader.isHTML5" nowrap>{{x.file.size | KB}}</td>
+                    <td ng-show="uploader.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 ng-style="{ 'width': x.progress + '%' }"
+                                 style="width: 0;">
+                                {{x.progress}}%
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <i class="glyphicon glyphicon-ok" ng-if="x.isSuccess"></i>
+                        <i class="glyphicon glyphicon-ban-circle" ng-if="x.isCancel"></i>
+                        <i class="glyphicon glyphicon-remove" ng-if="x.isError"></i>
+                    </td>
+                    <td nowrap>
+                        <button type="button"
+                                class="btn btn-success btn-xs"
+                                ng-click="x.upload()"
+                                ng-disabled="x.isReady || x.isUploading || x.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> 上传
+                        </button>
+                        <button type="button"
+                                class="btn btn-danger btn-xs"
+                                ng-click="x.remove(); deleteImg()">
+                            <span class="glyphicon glyphicon-trash"></span> 删除
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

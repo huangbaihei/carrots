@@ -1,0 +1,74 @@
+<div class="moduleDetails font14">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>{{vm.title}}</strong>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="detailsForm">
+                <div class="form-group">
+                    <label class="control-label col-md-2"><span class="text-red">*&nbsp;</span>名&ensp;&ensp;&ensp;称</label>
+                    <div class="col-md-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="vm.add.name"
+                               placeholder="请输入名称，此项必填"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Menuld</label>
+                    <div class="col-md-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="vm.add.menuID"
+                               placeholder="请输入英文名称，只能是英文"
+                               onkeyup="this.value=this.value.replace(/[^A-Za-z]/g,'')"
+                               onafterpaste="this.value=this.value.replace(/[^A-Za-z]/g,'') ">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">URL地址</label>
+                    <div class="col-md-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="vm.add.url"
+                               placeholder="请输入模块url地址">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">父模块ID</label>
+                    <div class="col-md-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="vm.add.parentID"
+                               placeholder="请输入父模块ID，只能是数字"
+                               onkeyup="this.value=this.value.replace(/[^\d]/g,'') "
+                               onafterpaste="this.value=this.value.replace(/[^\d]/g,'') ">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">模块类别</label>
+                    <div class="col-md-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="vm.add.type"
+                               placeholder="请输入模块类别">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button class="btn btn-default pull-right" ui-sref="home.module">取消</button>
+                        <button class="btn btn-success pull-right"
+                                ng-click="vm.save()"
+                                style="margin-right: 5px"
+                                ng-disabled="detailsForm.$invalid"
+                                type="submit">
+                            保存
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

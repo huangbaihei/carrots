@@ -1,0 +1,100 @@
+<div class="container-fluid font14">
+    <div class="row">
+        <div class="panel panel-default pd-top-15">
+            <div class="form-horizontal">
+                <form class="form-group">
+                    <div class="col-md-4" style="margin-bottom: 10px;margin-top: 10px;">
+                        <label class="control-label col-md-4">角色</label>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="vm.roleID">
+                                <option value="">全部</option>
+                                <option ng-repeat="x in vm.roleList track by $index"
+                                        value="{{x.id}}">
+                                    {{x.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 10px;margin-top: 10px;">
+                        <label class="control-label col-md-4">用户名</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="vm.userName">
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="margin-bottom: 10px;margin-top: 10px;">
+                        <div class="col-md-12">
+                            <button type="button"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.search()">
+                                搜索
+                            </button>
+                            <button type="button"
+                                    class="btn btn-danger pull-right"
+                                    ng-click="vm.clear()"
+                                    style="margin-right: 10px">
+                                重置
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>账户列表</strong>
+                <div class="btn-group pull-right">
+                    <button class="btn btn-success btn-xs"
+                            ui-sref="home.accountDetails"
+                            ng-disabled="!vm.operationPower[0].select">
+                        + 新增账户
+                    </button>
+                </div>
+            </div>
+            <p ng-if="vm.managerList.length === 0" class="text-center" style="margin-top: 10px;font-size: 14px">暂无任何数据</p>
+            <div class="panel-body" ng-if="vm.managerList.length !== 0">
+                <div class="table-responsive">
+                    <table class="table table-border table-striped">
+                        <thead>
+                        <tr>
+                            <th>用户ID</th>
+                            <th>用户名</th>
+                            <th>角色ID</th>
+                            <th>创建人ID</th>
+                            <th>创建时间</th>
+                            <th>更新人ID</th>
+                            <th>更新时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="x in vm.managerList track by $index">
+                            <td>{{x.id}}</td>
+                            <td>{{x.name}}</td>
+                            <td>{{x.roleID}}</td>
+                            <td>{{x.createBy}}</td>
+                            <td>{{x.createAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{x.updateBy}}</td>
+                            <td>{{x.updateAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>
+                                <button class="btn btn-primary btn-xs"
+                                        ui-sref="home.accountDetails({id:x.id})"
+                                        ng-disabled="!vm.operationPower[1].select">
+                                    编辑
+                                </button>
+                                <button class="btn btn-danger btn-xs"
+                                        ng-click="vm.delete(x.id)"
+                                        ng-disabled="!vm.operationPower[2].select">
+                                    删除
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <pagination size="vm.size" total="vm.total" page="vm.page"></pagination>
+    </div>
+</div>

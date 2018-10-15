@@ -1,0 +1,56 @@
+<div class="row font14">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>角色管理</strong>
+                <div class="btn-group pull-right">
+                    <button class="btn btn-success btn-xs"
+                            ui-sref="home.roleDetails"
+                            ng-disabled="!vm.operationPower[0].select">
+                        +新增角色
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-border table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>角色名</th>
+                            <th>创建人</th>
+                            <th>创建时间</th>
+                            <th>更新人</th>
+                            <th>更新时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="x in vm.roleList">
+                            <td>{{x.id}}</td>
+                            <td>{{x.name}}</td>
+                            <td>{{x.createBy}}</td>
+                            <td>{{x.createAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{x.updateBy}}</td>
+                            <td>{{x.updateAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>
+                                <button class="btn btn-primary btn-xs"
+                                        ui-sref="home.roleDetails({id:x.id})"
+                                        ng-disabled="!vm.operationPower[1].select">
+                                    编辑
+                                </button>
+                                <button class="btn btn-danger btn-xs"
+                                        ng-click="vm.delete(x.id)"
+                                        ng-disabled="!vm.operationPower[2].select">
+                                    删除
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <pagination size="vm.size" total="vm.total" page="vm.page"></pagination>
+    </div>
+</div>
