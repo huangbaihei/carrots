@@ -1,0 +1,95 @@
+angular.module('myApp')
+    .controller('positionSearchCtrl',function ($rootScope,$scope,$state,$http,$stateParams,searchPanel,requestSvc) {
+        $(window).scrollTop(0);
+        let vm =this;
+        let searchPanelCopy = angular.copy(searchPanel);
+        vm.params=$state.params;
+        vm.provinceCity=$rootScope.getCity;
+        //读取数据
+        vm.select=requestSvc.judgeStorage(sessionStorage.jobOptions, searchPanelCopy);
+        //选中的数据
+        vm.data=requestSvc.dataConvert(vm.select);
+        //存入本地
+        sessionStorage.jobOptions=JSON.stringify(vm.select);
+        //数据组装
+        vm.data.name = vm.params.name;
+        //条件选择
+        vm.checkbox = requestSvc.checkbox;
+        // 初始化显示或者隐藏
+        vm.towCode={};
+        //高亮其它页面跳转的信息参数
+        vm.params.page=vm.params.page?vm.params.page:1;
+        if ($state.params.id){
+            vm.select.category[0].choose=false;
+            vm.select.category[parseInt($state.params.id)].choose=true;
+        }
+        //处理三级搜索目录
+        vm.jobCategories=function (index) {
+            vm.selectNum=requestSvc.selectedNum(vm.select.category);
+            //判断需要展开详情的项目
+            vm.showCategoryNum =requestSvc.judgeShow(vm.select.category);
+            //展开详情
+            if(index > 0 && vm.showCategoryNum > 0 && vm.selectNum < 2) {
+                vm.select.subCategory = searchPanelCopy.subCategory[vm.showCategoryNum - 1].data;
+            }
+            //清除详情数据信息
+            else if(index === 0 || vm.showCategoryNum === 0 || vm.selectNum > 1) {
+                vm.select.subCategory = [];
+            }
+        };
+        vm.jobCategories(parseInt($state.params.id)+1);
+        //高亮其它页面转来的详情数据信息
+        if ($state.params.subId && vm.select.subCategory.length>0){
+            vm.select.subCategory[0].choose=false;
+            vm.select.subCategory[parseInt($state.params.subId)].choose = true;
+        }
+        //搜索
+        vm.look=function() {
+            //    存入本地
+            sessionStorage.jobOptions=JSON.stringify(vm.select);
+            $state.go('.', {
+                page: 1,
+                size: 10,
+                name: vm.data.name,
+                id: undefined,
+                jp: false
+            }, {reload: true});
+        };
+        //清空
+        vm.air=function () {
+            sessionStorage.removeItem("jobOptions");
+            sessionStorage.jobOptions = JSON.stringify(searchPanelCopy);
+            $state.go('.', {
+                page: 1,
+                size: 10,
+                name: undefined,
+                id: undefined,
+                subId: undefined,
+                jp: false
+            }, {reload: true});
+        };
+        // 获取职位列表
+        requestSvc.getSearchJob(vm.data).then(function(res) {
+            if(res.data.code === 0) {
+                vm.plainJobList = res.data.data;
+                vm.towCode.totalItems = res.data.total;
+                vm.totalItems = res.data.total;
+                vm.currentPage = $stateParams.page || 1;
+                vm.currentSize = $stateParams.size || 10;
+
+            }
+
+            // 404页面
+            if(res.data.code < 0 || vm.plainJobList.length === 0) {
+                requestSvc.getSearchJob({size: 3, recommend: 1})
+                    .then(function(response) {
+                        if(response.data.code === 0) {
+                            vm.eliteJob = response.data.data;
+                        }
+                        else {
+                            $rootScope.alert(response.data.message);
+                        }
+                    });
+            }
+        });
+    });

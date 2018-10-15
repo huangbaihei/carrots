@@ -1,0 +1,179 @@
+.search-head {
+  padding: 15px 20px;
+  background: white;
+  font-size: 14px; }
+  .search-head .padding-0 {
+    padding: 0;
+    margin-bottom: 15px; }
+  .search-head .margin-0 {
+    margin: 0; }
+  .search-head .flex {
+    display: flex; }
+  .search-head .key-words {
+    display: flex;
+    align-items: center; }
+  .search-head .search-input {
+    width: 40%;
+    display: inline-block;
+    margin-left: 15px; }
+  .search-head .search-nav {
+    display: flex; }
+  .search-head .search-option {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin: 2px;
+    font-weight: 700;
+    white-space: nowrap; }
+  .search-head .search-menu {
+    display: flex;
+    flex-wrap: wrap; }
+  .search-head .search-submenu {
+    padding: 5px 10px;
+    margin: 2px;
+    color: #536a82;
+    cursor: pointer;
+    display: inline-block; }
+  .search-head .defaultChoice {
+    background-color: #fc2b47;
+    color: #fff !important; }
+  .search-head .btn-air {
+    float: right;
+    padding: 5px 10px;
+    margin-right: 20px;
+    color: #536a82;
+    border: 1px solid #ccc;
+    border-radius: 3px; }
+  .search-head .btn-look {
+    float: right;
+    padding: 5px 10px;
+    background-color: #fc2b47;
+    color: #fff !important;
+    border: 1px solid #fff;
+    border-radius: 3px; }
+
+.search-main {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  background: white;
+  font-size: 14px; }
+  .search-main .searchJob-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 20px 30px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    cursor: pointer; }
+  .search-main .searchJob-content:hover {
+    box-shadow: 0 0 10px #d9d9d9; }
+  .search-main .searchJob-bor-rig {
+    padding: 0; }
+  .search-main .searchJob-name {
+    font-weight: 700;
+    font-size: 16px; }
+  .search-main .peer {
+    display: flex;
+    align-items: center; }
+  .search-main .searchJob-time {
+    color: #999;
+    font-size: 15px; }
+  .search-main .searchJob-exper {
+    margin: 15px 0;
+    font-weight: 700;
+    color: #fc2b47; }
+  .search-main .searchJob-area {
+    color: #536a82;
+    font-size: 15px; }
+  .search-main .searchJob-padlef {
+    border-left: 1px solid #e8e8e8;
+    padding-right: 0;
+    padding-left: 65px; }
+    @media screen and (max-width: 767px) {
+      .search-main .searchJob-padlef {
+        padding-right: 15px;
+        padding-left: 15px; } }
+  .search-main .searchJob-inline {
+    padding: 0 0 10px 0; }
+  .search-main .searchJob-name1 {
+    font-weight: 900; }
+  .search-main .searchJob-exper1 {
+    margin: 15px 0; }
+  .search-main .searchJob-img {
+    height: 110px;
+    width: 110px;
+    padding: 0;
+    font-size: 0;
+    text-align: center;
+    box-sizing: content-box;
+    border: 1px solid #E8E8E8; }
+    @media screen and (max-width: 991px) {
+      .search-main .searchJob-img {
+        display: none; } }
+  .search-main .searchJob-img span {
+    height: 100%;
+    width: 0;
+    overflow: hidden; }
+  .search-main .searchJob-logo {
+    display: inline-block;
+    object-fit: contain;
+    max-height: 100%; }
+
+.error .error404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 170px 0 145px;
+  border-bottom: 1px solid #e8e8e8; }
+  @media screen and (max-width: 767px) {
+    .error .error404 {
+      flex-direction: column;
+      padding: 85px 0 72px; } }
+.error .error-title {
+  margin: 20px 0;
+  font-size: 16px;
+  font-weight: 700; }
+.error .groom-page {
+  padding-bottom: 20px;
+  margin: 0;
+  border-bottom: 1px solid #e8e8e8; }
+.error .groom-content {
+  margin: 23px 0 15px; }
+.error .groom-head {
+  border: 1px solid #d9d9d9;
+  border-radius: 5px; }
+.error .groom-main {
+  display: flex;
+  padding: 10px; }
+.error .groom-logo {
+  height: 110px;
+  width: 110px;
+  padding: 0;
+  font-size: 0;
+  text-align: center;
+  box-sizing: content-box;
+  border: 1px solid #E8E8E8; }
+.error .groom-colu {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: calc(100% - 110px);
+  margin-left: 10px; }
+  @media screen and (max-width: 767px) {
+    .error .groom-colu {
+      margin-left: 20px; } }
+.error .groom-exper {
+  margin-bottom: 10px;
+  color: #fc2b47;
+  font-size: 16px; }
+.error .groom-name {
+  margin-bottom: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #536a82; }
+.error .groom-blank {
+  padding-bottom: 40px; }
+
+/*# sourceMappingURL=positionSearch.css.map */

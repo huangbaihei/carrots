@@ -1,0 +1,80 @@
+<header class="carrot-top">
+    <div class="header-panel">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 pd-0">
+                    <!--左logo-->
+                    <div class="col-sm-5">
+                        <img src="img/carrot.png" class="pull-left main-logo">
+                        <div class="main-location disHidden">
+                            <img src="img/carrot-small.png">
+                            <span class="selected-location">北京站</span>
+                        </div>
+                    </div>
+                    <!--右导航-->
+                    <div class="pull-right navbar-collapse col-sm-6 nav-xs collapse in">
+                        <ul class="nav navbar-nav navbar-right nav-media main-nav">
+                            <li class="nav-page">
+                                首页
+                                <span class="nav-page-underline"></span>
+                            </li>
+                            <li class="nav-page">
+                                找职位
+                                <span class="nav-page-underline"></span>
+                            </li>
+                            <li class="nav-page">
+                                找精英
+                                <span class="nav-page-underline"></span>
+                            </li>
+                            <li class="nav-page mg-right-0">
+                                关于我们
+                                <span class="nav-page-underline"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--按钮-->
+                    <div class="navbar-header">
+                        <button
+                                type="button"
+                                class="navbar-toggle collapsed"
+                                data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="sr-only">按钮</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<ui-view></ui-view>
+
+
+<footer>
+    <div class="footer-top">
+        <div class="container">
+            <div class="col-md-4">
+                <ul>
+                    <li>关于我们</li>
+                    <li>萝卜多——有别传统新猎头</li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <ul>
+                    <li>&nbsp;联系我们</li>
+                    <li><img src="../img/dianhua.png" alt="">&nbsp;&nbsp;联系电话：（010）59478634</li>
+                    <li><img src="../img/youxiang.png" alt="">&nbsp;&nbsp;邮箱支持：fuhua@ptteng.com</li>
+                    <li><img src="../img/dizhi.png" alt="">&nbsp;&nbsp;地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：北京市海淀区翠微路甲10#225室</li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-right"><img src="../img/erweima.png" alt=""><p>微信号：ptteng-fuhuaqi</p></div>
+        </div>
+    </div>
+    <div class="footer-bottom">Copyright © 2015 北京葡萄藤信息技术有限公司 All Rights Reserved | 京ICP备15035574号-1</div>
+</footer>

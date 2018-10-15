@@ -1,0 +1,13 @@
+Index: pages/home.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pages/home.html	(revision 26282)
++++ pages/home.html	(date 1534821679047)
+@@ -1,5 +1,3 @@
+-
+-
+ <footer>
+ 321
+ </footer>

@@ -1,0 +1,8 @@
+angular.module('myApp')
+    .controller('homeCtrl', function ($scope,$state) {
+        var vm = this;
+        $scope.state = $state;
+        vm.clearCache=function () {
+            sessionStorage.clear();
+        }
+    });

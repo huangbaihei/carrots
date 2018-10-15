@@ -1,0 +1,11 @@
+<div class="backgroundSearch">
+<div class="container">
+	<div class="row">
+		<div class="search">
+			<span class="search-company" ui-sref="home.searchHead.companySearch" ng-class="{'ischoose': state.includes('home.searchHead.companySearch')}">公司</span>
+			<span class="search-position" ui-sref="home.searchHead.positionSearch" ng-class="{'ischoose': state.includes('home.searchHead.positionSearch')}">职业</span>
+		</div>
+	</div>
+	<div ui-view></div>
+</div>
+</div>

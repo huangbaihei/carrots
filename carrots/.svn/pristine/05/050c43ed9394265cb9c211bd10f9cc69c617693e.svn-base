@@ -1,0 +1,153 @@
+.company-detail {
+  background: #f6f7f8; }
+  .company-detail .company-detail-logo {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #e8e8e8;
+    border-radius: 1px; }
+  .company-detail .company-detail-card {
+    margin-top: 20px;
+    background-color: #fff; }
+  .company-detail .company-card-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 30px; }
+    .company-detail .company-card-text .company-name {
+      padding: 20px 0;
+      font-size: 20px;
+      color: #2b3d51; }
+    .company-detail .company-card-text .company-slogan {
+      padding: 20px 0;
+      font-size: 18px;
+      color: #536a82; }
+  .company-detail .company-detail-content {
+    font-size: 16px;
+    margin: 40px 0;
+    background-color: #fff;
+    padding: 20px 10px;
+    min-height: 500px; }
+  .company-detail .btn-tab {
+    border-bottom: 1px solid #e8e8e8; }
+  .company-detail .beChosen {
+    color: #fc2b47;
+    border-bottom: 2px solid #fc2b47;
+    font-weight: 700; }
+  .company-detail .company-detail-btn {
+    padding-bottom: 15px;
+    text-align: left; }
+  .company-detail .recruit-jobs,
+  .company-detail .company-production {
+    margin: 20px 0; }
+  .company-detail .production-logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    overflow: hidden;
+    padding: 15px 0; }
+  .company-detail .companyTab {
+    min-height: 500px; }
+  .company-detail .jobs-num,
+  .company-detail .company-production-title,
+  .company-detail .company-introduction-title {
+    padding-left: 6px;
+    border-left: 4px solid #fc2b47;
+    font-weight: 700; }
+  .company-detail .introduction-text {
+    margin-top: 35px;
+    font-size: 1.4rem;
+    text-align: justify; }
+  .company-detail .company-detail-jobs {
+    border-left: 1px solid #e8e8e8;
+    min-height: 500px; }
+  .company-detail .company-information {
+    white-space: nowrap;
+    width: 100%;
+    padding-top: 25px;
+    text-align: left; }
+  .company-detail .company-msg {
+    margin-left: 45px;
+    font-weight: 700; }
+  .company-detail .line {
+    display: inline-block;
+    border-bottom: 1px solid #e8e8e8;
+    width: 200px;
+    vertical-align: middle; }
+  .company-detail .company-info-text {
+    padding-top: 50px;
+    padding-left: 90px;
+    min-height: 190px; }
+    .company-detail .company-info-text p {
+      font-size: 1.4rem;
+      margin: 0 0 28px 0; }
+  .company-detail .company-target-title {
+    margin-left: 45px;
+    font-weight: 700; }
+  .company-detail .company-target-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 50px 55px; }
+  .company-detail .target {
+    display: inline-block;
+    margin: 0 5px 20px;
+    padding: 2px;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px; }
+  .company-detail .jobs-panel {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #e8e8e8; }
+  .company-detail .jobs-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+    font-weight: 700; }
+  .company-detail .jobs-list {
+    display: inline-block;
+    margin-left: 7px;
+    vertical-align: middle; }
+  .company-detail .jobs-type {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 4px 10px;
+    font-size: 1.4rem;
+    color: #536a82;
+    cursor: pointer; }
+  .company-detail .pick {
+    background-color: #eb5255;
+    color: #fff !important;
+    margin: 0 5px; }
+  .company-detail .search-jobs {
+    margin-top: 15px;
+    padding: 25px 30px;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    cursor: pointer; }
+  .company-detail .search-jobs-detail {
+    overflow: hidden; }
+  .company-detail .job-name {
+    display: inline-block;
+    vertical-align: middle;
+    width: 25%;
+    font-size: 1.6rem;
+    font-weight: 700; }
+  .company-detail .job-compensation {
+    margin-left: 5%;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fc2b47; }
+  .company-detail .job-experience {
+    margin-left: 5%;
+    font-size: 1.4rem; }
+  .company-detail .no-find {
+    height: 495px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+/*# sourceMappingURL=companyDetail.css.map */

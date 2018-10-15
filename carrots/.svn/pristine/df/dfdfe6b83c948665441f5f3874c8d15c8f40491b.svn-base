@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import "global";
+
+.carrot-top {
+
+}
+
+footer {
+  border-top: 2px solid #000;
+  background: #ffffff;
+  width: 100%;
+  @include p-b;
+  .footer-top {
+    font-size: 1.4rem;
+    color: #b0b0b0;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    ul {
+      li {
+        margin-bottom: 15px;
+        &:first-child{
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .footer-right {
+      @include md-lg {
+        @include middle;
+        flex-direction: column;
+      }
+    }
+  }
+  .footer-bottom {
+    padding: 6px 15px;
+    background: #35485b;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999999;
+  }
+
+}

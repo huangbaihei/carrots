@@ -1,0 +1,17 @@
+angular.module('myApp')
+    .factory("path", function () {
+    return {
+        /*首页模块*/
+
+        /*找职位模块*/
+
+        //获取banner图
+        getBanner_url: function() {
+            return "/carrots-ajax/a/article/search"
+        },
+        /*找精英模块*/
+
+        /*关于我们模块*/
+
+    }
+});

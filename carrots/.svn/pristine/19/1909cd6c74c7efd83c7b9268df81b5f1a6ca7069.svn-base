@@ -1,0 +1,111 @@
+<div class="company-detail">
+    <div class="container">
+        <div class="row">
+            <div class="company-detail-card col-xs-12">
+                <img ng-src="{{vm.company.logo}}" alt="" class="company-detail-logo">
+                <div class="company-card-text">
+                    <div class="company-name">
+                        <strong>{{vm.company.name}}</strong>
+                    </div>
+                    <div class="company-slogan">
+                        <strong>{{vm.company.slogan}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--公司详情+在招职位-->
+            <div class="company-detail-content row">
+                <div class="companyTab col-xs-12 col-sm-8">
+                    <div class="btn-tab">
+                        <button class="company-detail-btn"
+                                ng-class="{beChosen:!vm.beChosen}"
+                                ng-click="vm.changChoice(!vm.beChosen)">
+                            公司详情
+                        </button>
+                        <button class="company-detail-btn"
+                                ng-class="{beChosen:vm.beChosen}"
+                                ng-click="vm.changChoice(vm.beChosen)">
+                            在招职位
+                        </button>
+                    </div>
+                    <div class="Tab1" ng-if="!vm.beChosen">
+                        <div class="company-production">
+                            <div class="company-production-title">公司产品</div>
+                            <img ng-src="{{vm.production}}" alt="" class="production-logo">
+                        </div>
+                        <div class="company-introduction">
+                            <div class="company-introduction-title">公司产品</div>
+                            <div class="introduction-text">{{vm.company.summary}}</div>
+                        </div>
+                    </div>
+                    <div class="Tab2" ng-if="vm.beChosen">
+                        <div class="recruit-jobs">
+                            <div class="jobs-num">在招职位{{vm.jobsTotal}}个</div>
+                        </div>
+                        <div class="jobs-panel">
+                            <span class="jobs-title">职业类别</span>
+                            <ul class="jobs-list">
+                                <li ng-repeat="job in vm.options.category track by $index"
+                                    ng-class="{pick:job.choose}"
+                                    ng-click="vm.changeJobsType($index,vm.options.category);vm.searchJobs()"
+                                    class="jobs-type">
+                                    {{job.name}}
+                                </li>
+                            </ul>
+                        </div>
+                        <!--搜索结果-->
+                        <div class="jobs" ng-if="vm.searchResult">
+                            <div class="search-jobs" ng-repeat="job in vm.jobsList track by $index" ui-sref="home.jobDetails({id:job.id})">
+                                <div class="search-jobs-detail">
+                                    <span class="word-length-limit job-name">{{job.name}}[{{job.city|region}}]</span>
+                                    <span class="word-length-limit job-compensation">{{job.compensation|compensationFilter}}</span>
+                                    <span class="word-length-limit job-experience">{{job.experience|experienceFilter}}/ {{ job.education | educationFilter }}</span>
+                                    <span class="word-length-limit job-experience">{{ job.updateAt | date : 'yyyy-MM-dd HH:mm:ss'}}发布</span>
+                                </div>
+                            </div>
+                            <pagination size="vm.size" page="vm.page" total="vm.total"></pagination>
+                        </div>
+                        <div class="row no-find" ng-if="!vm.searchResult">
+                            <div class="no-find-img">
+                                <img src="img/alient.png" alt="网速炸了别看了">
+                            </div>
+                            <div class="no-find-text">
+                                <span style="font-size: 20px; color: #2b3d51">
+                                    <strong>暂时没有符合该搜索条件的内容</strong>
+                                </span><br>
+                                <span style="font-size: 18px; color: #536a82">
+                                    <strong>请重新修改搜索条件后再次进行搜索</strong>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--公司信息-->
+                <div class="company-detail-jobs col-xs-12 col-sm-4">
+                    <div class="company-information">
+                        <span class="company-msg">公司信息&emsp;</span>
+                        <span class="line"></span>
+                    </div>
+                    <div class="company-info-text">
+                        <p><img src="img/user.png" alt="网速炸了">&emsp;{{vm.company.totalNum}}人</p>
+                        <p><img src="img/bottle.png" alt="网速炸了">&emsp;{{vm.industry|industryList}}</p>
+                        <p><img src="img/companyListMap.png" alt="网速炸了">&emsp;{{vm.company.city|region}}</p>
+                    </div>
+                    <div class="company-target">
+                        <div class="company-information">
+                            <span class="company-target-title">公司标签&emsp;</span>
+                            <span class="line"></span>
+                        </div>
+                        <div class="company-target-content">
+                            <div class="target" ng-repeat="target in vm.tagList">
+                                {{target.tag}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

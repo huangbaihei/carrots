@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,WAAW;EACT,OAAO,EAAE,GAAG;EACZ,cAAc,EAAE,IAAI;EACpB,gBAAgB,EAAE,OAAO;EACzB,iBAAK;IACH,OAAO,EAAC,CAAC",
+"sources": ["desk.scss"],
+"names": [],
+"file": "desk.css"
+}

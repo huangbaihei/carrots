@@ -1,0 +1,90 @@
+<div class="job-detail">
+    <div class="container">
+        <div class="row">
+        	<div class="detailsPost">
+                <div class="jobInfo-bor col-md-8">
+                    <div class="jobInfo-container">
+                            <div class="jobInfo-name">{{ vm.jobInfo.name }}</div>
+                            <div class="jobInfo-product">{{ vm.jobInfo.companyName }}</div>
+                            <ul class="jobInfo-news">
+                                <li class="jobInfo-news-content margin-0"><span class="jobInfo-compen">{{ vm.jobInfo.compensation |compensationFilter}}</span></li>
+                                <li class="jobInfo-news-content"><img class="description" src="img/location-jobdescripe.png"><span class="jobInfo-mid">{{ vm.jobInfo.city | region}}</span></li>
+                                <li class="jobInfo-news-content"><img class="description" src="img/description-2.png"><span class="jobInfo-mid">{{ vm.jobInfo.education | educationFilter}}</span></li>
+                                <li class="jobInfo-news-content"><img class="description" src="img/description-1.png"><span class="jobInfo-mid">{{ vm.jobInfo.experience | experienceFilter}}</span></li>
+                            </ul>
+                            <div class="jobInfo-time"><img class="description" src="img/date.png"><span class="jobInfo-mid">发布时间：{{ vm.jobInfo.updateAt | date: 'yyyy-MM-dd HH:mm:ss'}}</span></div>
+                        <div class="jobInfo-text">
+                            <div class="jobInfo-title">职位描述</div>
+                            <div class="jobInfo-content-text">
+                                <div class="jobInfo-text-title">岗位职责：</div>
+                                <div class="jobInfo-detail">{{ vm.jobInfo.responsibility }}</div>
+                            </div>
+                            <div class="jobInfo-content-text">
+                                <div class="jobInfo-text-title">必备条件：</div>
+                                <div class="jobInfo-detail">{{ vm.jobInfo.requisite }}</div>
+                            </div>
+                            <div>
+                                <div class="jobInfo-text-title">公司福利：</div>
+                                <div class="jobInfo-detail">{{ vm.jobInfo.boon }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12 text-left">
+                    <div class="jobInfo-nav">
+                        <div class="jobInfo-text-lef">
+                            <div class="jobInfo-logo"><img class="jobInfo-img" ng-src="{{ vm.jobInfo.logo }}"></div>
+                        </div>
+                        <div class="jobInfo-name-text" ui-sref="home.companyDetail({id:vm.jobInfo.companyId})">
+                            <span class="jobInfo-name">{{ vm.jobInfo.companyName }} </span>
+                            <img  class="description" src="img/company-home-1.png">
+                        </div>
+                    </div>
+                    <div class="jobInfo-fot">
+                        <div class="jobInfo-fot-title">基本信息</div>
+                        <span class="sidebar-split-line"></span>
+                    </div>
+                        <div class="jobInfo-fot-container">
+                            <div class="mar-top30">
+                            	<img class="description" src="img/details01.png">
+                            	<span class="mar-lef20">{{ vm.jobInfo.totalNum}}人</span>
+                            </div>
+                            <div class="mar-top30">
+                                <img class="description" src="img/details02.png">
+                                <span class="mar-lef20">{{ vm.industryInfo.industry | industryList}}</span>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 col-md-8">
+                <div class="jobInfo-share">
+                	<div class="sharebuttonbox">
+                    <div class="jobInfo-share-text"><img src="img/sharing.png"><span class="jobInfo-mid">分享</span>
+                    <img ng-click="vm.share('wx')" class="mar-rig10 cursor-pon" src="img/weixin.png">
+                    <img ng-click="vm.share('sqq')" class="mar-rig10 cursor-pon" src="img/qq.png">
+                    <img ng-click="vm.share('tsina')" class="mar-rig10 cursor-pon" src="img/weibo.png">
+                    <button class="jobInfo-btn" type="button" ng-click="vm.interest()">我感兴趣</button>
+                    </div>
+                    </div>
+                </div>
+                <!-- 感兴趣模态框 -->
+                <!-- <script type="text/ng-template" id="shareModalContent.html">
+                    <div class="modal-header Modal-header">
+                        <span>我感兴趣</span>
+                        <img class="Modal-close" ng-click="vm.close()" src="img/shanchu.png">
+                    </div>
+                    <div class="modal-body Modal-body">
+                        <div class="Modal-container">
+                            <div class="Modal_title">模式介绍：萝卜多先技术面试-再推荐给用人单位</div>
+                            <div class="Modal-text">萝卜多是一个知根知底的社群招聘。萝卜多的合作企业和候选人，都是萝卜多精心筛选，
+                                认证，陪伴多年的伙伴。在萝卜多找工作快，工作有保障。值得您信任的招聘网站。
+                            </div>
+                            <div class="Modal-text1">您将感兴趣的职位、公司名称以及您的个人信息发送到我们的邮箱，我们会尽快帮您安排。</div>
+                            <div class="Modal-email">邮箱地址：hr@ptteng.com</div>
+                        </div>
+                    </div>
+                </script> -->
+            </div>
+        	</div>
+        </div>
+    </div>
+</div>

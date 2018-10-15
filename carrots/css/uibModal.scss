@@ -1,0 +1,46 @@
+.Modal-header {
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  background: #fc2b47;
+}
+.Modal-close {
+  float: right;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.Modal-body {
+  padding: 25px 70px;
+  text-align: center;
+}
+@media screen and (max-width: 520px) {
+  .Modal-body {
+    padding: 25px 15px;
+  }
+}
+.Modal-container {
+  display: inline-block;
+  text-align: left;
+}
+.Modal-title {
+  font-size: 16px;
+  color: #333;
+}
+.Modal-text {
+  margin-top: 12px;
+  color: #666;
+}
+.Modal-text1 {
+  margin-top: 10px;
+  color: #666;
+}
+.Modal-email {
+  margin-top: 25px;
+  font-size: 16px;
+  color: #333;
+}

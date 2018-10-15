@@ -1,0 +1,4 @@
+angular.module('myApp').controller('aboutCtrl', function ($state) {
+    let vm = this;
+    vm.toggle = !!$state.params.status
+});

@@ -1,0 +1,173 @@
+.company-list {
+  background: #f6f7f8;
+  font-size: 14px; }
+  .company-list .company-list-banner {
+    width: 100%; }
+  .company-list .padding-0 {
+    padding: 0;
+    margin-bottom: 15px; }
+  .company-list .flex {
+    display: flex; }
+  .company-list .key-words {
+    display: flex;
+    align-items: center; }
+  .company-list .search-option {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    font-weight: 700;
+    white-space: nowrap; }
+  .company-list .search-input {
+    width: 40%;
+    display: inline-block;
+    margin-left: 15px; }
+  .company-list .cancelChoice {
+    color: #536a82;
+    display: inline-block;
+    padding: 0 8px;
+    margin: 0 2px;
+    cursor: pointer; }
+  .company-list .beChosen {
+    display: inline-block;
+    margin: 2px;
+    background-color: #fc2b47;
+    color: white;
+    cursor: pointer; }
+  .company-list .choseBoxes {
+    padding: 5px 10px; }
+  .company-list .search-company-s {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin: 0 15px 20px -15px; }
+    @media screen and (max-width: 767px) {
+      .company-list .search-company-s {
+        margin-right: -15px; } }
+  .company-list .search-company-list-s {
+    padding-top: 20px;
+    margin-left: -30px;
+    margin-bottom: 20px;
+    background-color: #fff; }
+    @media screen and (max-width: 767px) {
+      .company-list .search-company-list-s {
+        margin-right: -30px; } }
+  .company-list .search-btn {
+    padding: 20px 0; }
+  .company-list .btn-xs {
+    font-size: 14px; }
+  .company-list .btn-default {
+    margin-right: 20px; }
+  .company-list .btn-danger {
+    background-color: #fc2b47;
+    border-color: #fc2b47; }
+  .company-list .search-company-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    min-height: 200px; }
+    .company-list .search-company-card .company-card {
+      flex: 1;
+      display: flex;
+      padding: 20px; }
+  .company-list .company-panel {
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    cursor: pointer; }
+  .company-list .company-logo {
+    flex: 0 0 115px;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .company-list .company-logo img {
+      display: inline-block;
+      width: 100%;
+      height: 100%; }
+  .company-list .company-text {
+    padding-left: 20px;
+    padding-top: 20px;
+    overflow: hidden; }
+    .company-list .company-text p {
+      margin-bottom: 15px; }
+    .company-list .company-text .company-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d3e50;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+    .company-list .company-text .common-slogan,
+    .company-list .company-text .company-jobs {
+      color: #536a82;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+  .company-list .company-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #999;
+    padding: 10px 0;
+    background-color: #fafafa; }
+  .company-list .no-find {
+    height: 495px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+.error .error404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 170px 0 145px;
+  border-bottom: 1px solid #e8e8e8; }
+  @media screen and (max-width: 767px) {
+    .error .error404 {
+      flex-direction: column;
+      padding: 85px 0 72px; } }
+.error .error-title {
+  margin: 20px 0;
+  font-size: 16px;
+  font-weight: 700; }
+.error .groom-page {
+  padding-bottom: 20px;
+  margin: 0;
+  border-bottom: 1px solid #e8e8e8; }
+.error .groom-content {
+  margin: 23px 0 15px; }
+.error .groom-head {
+  border: 1px solid #d9d9d9;
+  border-radius: 5px; }
+.error .groom-main {
+  display: flex;
+  padding: 10px; }
+.error .groom-logo {
+  height: 110px;
+  width: 110px;
+  padding: 0;
+  font-size: 0;
+  text-align: center;
+  box-sizing: content-box;
+  border: 1px solid #E8E8E8; }
+.error .groom-colu {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: calc(100% - 110px);
+  margin-left: 10px; }
+  @media screen and (max-width: 767px) {
+    .error .groom-colu {
+      margin-left: 20px; } }
+.error .groom-exper {
+  margin-bottom: 10px;
+  color: #fc2b47;
+  font-size: 16px; }
+.error .groom-name {
+  margin-bottom: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #536a82; }
+.error .groom-blank {
+  padding-bottom: 40px; }
+
+/*# sourceMappingURL=companySearch.css.map */

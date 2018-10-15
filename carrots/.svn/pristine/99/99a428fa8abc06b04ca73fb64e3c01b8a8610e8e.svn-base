@@ -1,0 +1,13 @@
+angular.module('myApp').controller('findJobsCtrl', function (findJobs, requestSvc) {
+    var vm = this;
+    vm.experienceJobs = findJobs.experienceJobs;
+    vm.researchJobs = findJobs.researchJobs;
+    vm.dataJobs = findJobs.dataJobs;
+    requestSvc.getBanner({type: 1, size: 4})
+        .then(function (res) {
+            console.log(res);
+            if(res.data.code === 0) {
+                vm.slides = res.data.data.articleList;
+            }
+        })
+});

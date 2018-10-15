@@ -1,0 +1,64 @@
+angular.module('myApp')
+    .controller('newestCtrl',function ($rootScope,$scope,$state,$http,$stateParams,searchPanel,requestSvc,commonUtil) {
+        let vm =this;
+        let searchPanelCopy = angular.copy(searchPanel);
+        vm.params=$state.params;
+        //读取数据
+        vm.select=commonUtil.judgeStorage(sessionStorage.newest, searchPanelCopy);
+        //选中的数据
+        vm.data=commonUtil.dataConvert(vm.select);
+        //存入本地
+        sessionStorage.newest=JSON.stringify(vm.select);
+        //数据组装
+        vm.data=$state.params;
+        vm.data.recommend= "0";
+        //多选
+        vm.checkbox = commonUtil.checkbox;
+        // 判断是否404
+        vm.towCode={};
+        //搜索
+        vm.look = function () {
+            //    存入本地
+            sessionStorage.newest = JSON.stringify(vm.select);
+            $state.go('.', {
+                page: 1,
+                size: 10,
+                name: vm.data.name,
+                id: undefined,
+            }, {reload: true});
+        };
+        //清空
+        vm.air = function () {
+            sessionStorage.removeItem("newest");
+            sessionStorage.newest = JSON.stringify(searchPanelCopy);
+            $state.go('.', {
+                page: 1,
+                size: 10,
+                name: undefined,
+                id: undefined,
+                subId: undefined,
+            }, {reload: true});
+        };
+        // 获取职位列表
+        requestSvc.getSearchJob(vm.data).then(function (res) {
+            if (res.data.code === 0) {
+                vm.plainJobList = res.data.data;
+                vm.totalItems = res.data.total;
+                vm.currentPage = $stateParams.page || 1;
+                vm.currentSize = $stateParams.size || 10;
+            }
+        // 404页面
+        if(res.data.code < 0 || vm.plainJobList.length === 0) {
+                requestSvc.getSearchJob({size: 4, recommend: 1})
+                    .then(function(response) {
+                        if(response.data.code === 0) {
+              vm.eliteJob = response.data.data;}
+                        else {
+                            $rootScope.alert(response.data.message);
+                        }
+                    });
+            }
+        });
+    });
+
+

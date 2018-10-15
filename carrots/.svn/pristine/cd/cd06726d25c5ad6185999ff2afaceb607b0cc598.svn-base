@@ -1,0 +1,156 @@
+@charset "UTF-8";
+@import "global";
+
+.search-head{
+	padding:15px 20px;
+	background:white;
+	font-size:14px;
+	.search-index{
+
+	}
+	.search-verification{
+
+	}
+	.padding-0{
+		padding:0;
+		margin-bottom:15px;
+	}
+	.margin-0{
+		margin:0;
+	}
+	.flex{
+		display:flex;
+	}
+	.key-words{
+		display: flex;
+    	align-items: center;
+	}
+	.search-input{
+		width: 40%;
+    	display: inline-block;
+    	margin-left:15px;
+	}
+	.search-nav{
+		display:flex;
+	}
+	.search-option{
+		display: flex;
+    	align-items: center;
+    	max-width: 100%;
+    	font-weight: 700;
+    	white-space:nowrap;
+	}
+	.search-menu{
+		display:flex;
+		flex-wrap: wrap;
+	}
+	.search-submenu{
+		padding: 3px 13px;
+		margin:2px;
+    	color: #536a82;
+    	cursor: pointer;
+    	display: inline-block;
+	}
+	.defaultChoice{
+		background-color: #fc2b47;
+    	color: #fff !important;
+    	
+	}
+	.btn-air{
+		float:right;
+		padding: 3px 16px;
+		margin-right:20px;
+		color:#536a82;
+	}
+	.btn-look{
+		float:right;
+		padding: 3px 16px;
+		background-color: #fc2b47;
+    	color: #fff !important;
+	}
+}
+
+.search-main{
+	margin-top:20px;
+	margin-bottom:20px;
+	padding:0 20px;
+	background:white;
+	font-size:14px;
+	.searchJob-content{
+		display: flex;
+    	justify-content: space-between;
+    	margin: 20px 0;
+    	padding: 20px 30px;
+    	border: 1px solid #e8e8e8;
+    	border-radius: 4px;
+	}
+	.clearbox{
+
+	}
+	.searchJob-bor-rig{
+		padding:0;
+	}
+	.searchJob-name{
+		font-weight: 700;
+		font-size:16px;
+	}
+	.peer{
+		display:flex;
+		align-items: center;
+	}
+	.searchJob-time{
+		color: #999;
+		font-size:15px;
+	}
+	.searchJob-exper{
+		margin:15px 0;
+		font-weight:700;
+		color:#fc2b47;
+
+	}
+	.searchJob-area{
+		color: #536a82;
+		font-size:15px;
+	}
+	.searchJob-padlef{
+		border-left: 1px solid #e8e8e8;
+		padding-right:0;
+		padding-left:65px;
+		@include xs{
+			padding-right: 15px;
+    		padding-left: 15px;
+    	}
+	}
+	.searchJob-inline{
+		padding:0 0 10px 0;
+	}
+	.searchJob-name1{
+		font-weight: 900;
+	}
+	.searchJob-exper1{
+		margin:15px 0;
+	}
+	.searchJob-img{
+		height: 110px;
+    	width: 110px;
+    	padding:0;
+    	font-size: 0;
+    	text-align: center;
+    	box-sizing: content-box;
+    	border: 1px solid #E8E8E8;
+    	@include md-max{
+    		display:none;
+    	}
+    }
+    .searchJob-img span{
+    	height: 100%;
+ 		width: 0;
+    	overflow: hidden;
+    }
+    .searchJob-logo{
+    	display: inline-block;
+    	max-width: 95%;
+    	height: 100%;
+    	max-height: 100%;
+    }
+}

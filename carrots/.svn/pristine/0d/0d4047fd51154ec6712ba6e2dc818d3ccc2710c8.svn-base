@@ -1,0 +1,15 @@
+.company-detail .company-detail-logo {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #e8e8e8;
+  border-radius: 1px; }
+.company-detail .company-card-text {
+  display: inline-block; }
+  .company-detail .company-card-text .company-name {
+    font-size: 20px;
+    color: #2b3d51; }
+  .company-detail .company-card-text .company-slogan {
+    font-size: 18px;
+    color: #536a82; }
+
+/*# sourceMappingURL=companyDetail.css.map */

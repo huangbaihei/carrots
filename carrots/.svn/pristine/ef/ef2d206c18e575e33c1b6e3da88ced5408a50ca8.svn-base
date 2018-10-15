@@ -1,0 +1,239 @@
+<div class="find-jobs">
+    <div class="container">
+        <div class="row">
+            <!--侧边导航开始-->
+            <div class="nav-menu">
+                <div>
+                    <div class="menu-title">
+                        <img src="img/chanpin2.png" alt="" class="initial-img" width="18" height="18">
+                        <img src="img/chanpin1.png" alt="" class="hover-img" width="18" height="18">
+                        <span>用户体验</span>
+                        <img src="img/zhiweijiantou.png" class="initial-img" width="7" height="13">
+                        <img src="img/zhiweijiantou2.png" class="hover-img" width="7" height="13">
+                    </div>
+                    <a ng-repeat="x in vm.experienceJobs">{{x.name}}</a>
+                    <div class="hover-menu">
+                        <ul>
+                            <li ng-repeat="x in vm.experienceJobs">
+                                <span>{{x.name}}</span>
+                                <a ng-repeat="y in x.subCategory">{{y.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="menu-title">
+                        <img src="img/jishu2.png" alt="" class="initial-img" width="18" height="16">
+                        <img src="img/jishu1.png" alt="" class="hover-img" width="18" height="16">
+                        <span>研发</span>
+                        <img src="img/zhiweijiantou.png" class="initial-img" width="7" height="13">
+                        <img src="img/zhiweijiantou2.png" class="hover-img" width="7" height="13">
+                    </div>
+                    <a ng-repeat="x in vm.researchJobs">{{x.name}}</a>
+                    <div class="hover-menu">
+                        <ul>
+                            <li ng-repeat="x in vm.researchJobs">
+                                <span>{{x.name}}</span>
+                                <a ng-repeat="y in x.subCategory">{{y.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="menu-title">
+                        <img src="img/sheji1.png" alt="" class="initial-img" width="21" height="18">
+                        <img src="img/sheji2.png" alt="" class="hover-img" width="21" height="18">
+                        <span>大数据</span>
+                        <img src="img/zhiweijiantou.png" class="initial-img" width="7" height="13">
+                        <img src="img/zhiweijiantou2.png" class="hover-img" width="7" height="13">
+                    </div>
+                    <a ng-repeat="x in vm.dataJobs">{{x.name}}</a>
+                    <div class="hover-menu">
+                        <ul>
+                            <li ng-repeat="x in vm.dataJobs">
+                                <span>{{x.name}}</span>
+                                <a ng-repeat="y in x.subCategory">{{y.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--侧边导航结束-->
+            <!--找职位banner轮播开始-->
+            <div class="job-carousel">
+                <div uib-carousel active="0" interval="3000">
+                    <div uib-slide ng-repeat="slide in vm.slides " index="$index">
+                        <img ng-src="{{slide.img}}">
+                    </div>
+                </div>
+                <!--顶部搜索栏开始-->
+                <div class="search-box">
+                    <form>
+                        <div class="input-group">
+                            <span class="input-group-addon">公司名称</span>
+                            <input class="form-control" placeholder="请输入公司名称" ng-model="vm.companyName">
+                            <span class="input-group-addon">
+                                <button ng-click="vm.searchCompany()">搜索</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <!--顶部搜索栏结束-->
+            </div>
+            <!--找职位banner轮播结束-->
+        </div>
+        <div class="row">
+            <!--推荐或最新职位开始-->
+            <div class="col-xs-12 job-title">
+                <a ng-class="{selected:!vm.selected}" ng-click="vm.changeSelect(!vm.selected)">推荐职位</a>
+                <a ng-class="{selected: vm.selected}" ng-click="vm.changeSelect(vm.selected)">最新职位</a>
+                <span class="pull-right" ui-sref="home.recommend">查看更多 ></span>
+            </div>
+            <div class="col-xs-12 job-content" ng-if="!vm.selected">
+                <div class="col-lg-3 col-md-6 padding-0"
+                     ng-repeat="x in vm.recommendJob"
+                     ui-sref="home.jobDetails({id:x.id})">
+                    <div class="job-box">
+                        <div class="job-logo">
+                            <img ng-src="{{x.logo}}" alt="缩略图">
+                        </div>
+                        <div class="job-text">
+                            <p class="word-length-limit">{{x.compensation | compensation}}</p>
+                            <p class="word-length-limit">{{x.name}}</p>
+                            <p class="word-length-limit">{{x.companyName}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 job-content" ng-if="vm.selected">
+                <div class="col-lg-3 col-md-6 padding-0"
+                     ng-repeat="x in vm.newestJob"
+                     ui-sref="home.jobDetails({id:x.id})">
+                    <div class="job-box">
+                        <div class="job-logo">
+                            <img ng-src="{{x.logo}}" alt="缩略图">
+                        </div>
+                        <div class="job-text">
+                            <p class="word-length-limit">{{x.compensation | compensation}}</p>
+                            <p class="word-length-limit">{{x.name}}</p>
+                            <p class="word-length-limit">{{x.companyName}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--推荐或最新职位结束-->
+            <!--推荐公司开始-->
+            <div class="col-xs-12 job-title">
+                <a class="selected">推荐公司</a>
+                <span class="pull-right" ui-sref="home.searchHead.companySearch">查看更多 ></span>
+            </div>
+            <div class="col-xs-12 company-content">
+                <div class="col-lg-4 newest">
+                    <img src="img/zhiweihangye.png" alt="">
+                    <div class="newest-text">
+                        <p>{{vm.certificationCompany[0].name}}</p>
+                        <p>{{vm.certificationCompany[0].slogan}}</p>
+                        <div>
+                            <span>
+                                <img src="img/zhiweishouji.png" alt="">&nbsp;
+                                {{vm.certificationCompany[0].industryList[0] | industryList}}
+                            </span>
+                            <span>
+                                 <img src="img/zhiweirongzi.png" alt="">&nbsp;
+                                {{vm.certificationCompany[0].financing | financing}}
+                            </span>
+                            <span>
+                                <img src="img/zhiweidizhi.png" alt="">&nbsp;
+                                {{vm.certificationCompany[0].province | region}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 padding-0 common-box">
+                    <div class="col-sm-3 col-xs-6  padding-0"
+                         ng-repeat="x in vm.commonCompany"
+                         ui-sref="home.companyDetail({id:x.id})">
+                        <div class="common-item">
+                            <img ng-src="{{x.logo}}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!--竖向轮播开始-->
+                <div class="col-xs-12 vertical-swiper-box">
+                    <div class="swiper-container vertical-swiper">
+                        <div class="swiper-wrapper swiper-content">
+                            <div class="swiper-slide"
+                                 ng-repeat="x in vm.certificationCompany"
+                                 ui-sref="home.companyDetail({id:x.id})">
+                                <div class="col-xs-6 company-box">
+                                    <div class="company-logo">
+                                        <img ng-src="{{x.logo}}" alt="">
+                                    </div>
+                                    <div class="company-text">
+                                        <p class="word-length-limit">{{x.name}}</p>
+                                        <p class="word-length-limit">{{x.slogan}}</p>
+                                        <div class="word-length-limit">
+                                            <span>{{x.industryList[0] | industryList}}</span>
+                                            <span>{{x.financing | financing}}</span>
+                                            <span>{{x.province | region}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 padding-0">
+                                    <div class="company-jobs">
+                                        <p class="word-length-limit">正在热招</p>
+                                        <div class="word-length-limit">
+                                            <span ng-repeat="y in vm.jobs[$index]">{{y.name}}</span>
+                                        </div>
+                                        <i></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <!--竖向轮播结束-->
+            </div>
+            <!--推荐公司结束-->
+            <div class="container-fluid">
+                <div class="row bg-fff">
+                    <div class="col-sm-6 content-img img-left"><img src="img/zhiweifengxian.png" alt=""></div>
+                    <div class="col-sm-6 content-box box-right">
+                        <div class="content first-content">
+                            <strong>无成本，零风险</strong>
+                            <ul>
+                                <li></li>
+                                <li>
+                                    <h4>无任何隐含费用全程免费</h4>
+                                    人才从投递到成功入职不需要任何费用，通过测试
+                                    后还可免费提供从业建议，不浪费每一分天赋。
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row bg-fff">
+                    <div class="col-sm-6 content-img hide-lg"><img src="img/zhiweipipei.png" alt=""></div>
+                    <div class="col-sm-6 content-box">
+                        <div class="content content-left">
+                            <strong>高效匹配，高度契合</strong>
+                            <ul>
+                                <li></li>
+                                <li>
+                                    <p>1-3天发送首个聘请通知<br>甄选职位 深度匹配 发送聘请通知</p>
+                                    <p>3-5天安排候选人面试<br>安排面试 协助客户快速入职</p>
+                                    <p>平均15天推荐成功<br>多方洽谈 售后服务</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 content-img hide-xs"><img src="img/zhiweipipei.png" alt=""></div>
+                </div>
+                <div class="row bottom-img">
+                    <img src="img/zhiweidibu.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+<!-- 搜索面板 -->
+<div class="row search-head">
+<div class=" search-index">
+	<form class="search-verification">
+		<div class="col-sm-12 padding-0">
+			<div class="flex"><span class="search-option key-words" style="margin: 0;"> 关 键 字 :</span>
+			<input class="search-input form-control" type="text" ng-model="vm.data.name"  maxlength="38">
+			</div>
+		</div>
+		<div class="col-sm-12 padding-0 search-nav">
+			<span class="search-option">所在地区：</span>
+			<ul class="search-menu">
+				<li class="search-submenu"
+				ng-repeat="item in vm.select.city track by $index"
+                ng-class="{true: 'defaultChoice'}[item.choose]"
+                ng-click="vm.checkbox($index, vm.select.city)">{{ item.name }}	
+                </li>
+			</ul>
+		</div>
+		<div class="col-sm-12 padding-0 search-nav">
+			<span class="search-option">职位类别：</span>
+			<ul class="search-menu">
+				<li class="search-submenu"
+				ng-repeat="item in vm.select.category track by $index"
+                ng-class="{true: 'defaultChoice'}[item.choose]"
+                ng-click="vm.checkbox($index, vm.select.category)">{{ item.name }}
+                </li>
+			</ul>
+		</div>
+		<div class="col-sm-12 padding-0 search-nav">
+			<span class="search-option">所属行业：</span>
+			<ul class="search-menu">
+				<li class="search-submenu"
+				ng-repeat="item in vm.select.industry track by $index"
+                ng-class="{true: 'defaultChoice'}[item.choose]"
+                ng-click="vm.checkbox($index, vm.select.industry)">{{ item.name }}	
+                </li>
+			</ul>
+		</div>
+		<div class="col-sm-12 padding-0 search-nav">
+			<span class="search-option">学历要求：</span>
+			<ul class="search-menu">
+				<li class="search-submenu"
+				ng-repeat="item in vm.select.education track by $index"
+                ng-class="{true: 'defaultChoice'}[item.choose]"
+                ng-click="vm.checkbox($index, vm.select.education)">{{ item.name }}	
+                </li>
+			</ul>
+		</div>
+		<div class="col-sm-12 padding-0 search-nav">
+			<span class="search-option">工作经验：</span>
+			<ul class="search-menu">
+				<li class="search-submenu"
+				ng-repeat="item in vm.select.experience track by $index"
+                ng-class="{true: 'defaultChoice'}[item.choose]"
+                ng-click="vm.checkbox($index, vm.select.experience)">{{ item.name }}	
+                </li>
+			</ul>
+		</div>
+		<div class="col-sm-12 padding-0 search-nav">
+			<span class="search-option">薪资水平：</span>
+			<ul class="search-menu">
+				<li class="search-submenu"
+				ng-repeat="item in vm.select.compensation track by $index"
+                ng-class="{true: 'defaultChoice'}[item.choose]"
+                ng-click="vm.checkbox($index, vm.select.compensation)">{{ item.name }}	
+                </li>
+			</ul>
+		</div>
+		<div class="col-sm-12 padding-0 search-nav">
+			<span class="search-option">发布时间：</span>
+			<ul class="search-menu">
+				<li class="search-submenu"
+				ng-repeat="item in vm.select.updateAt track by $index"
+                ng-class="{true: 'defaultChoice'}[item.choose]"
+                ng-click="vm.checkbox($index, vm.select.updateAt)">{{ item.name }}	
+                </li>
+			</ul>
+		</div>
+	</form>
+	<div class="col-sm-12 padding-0 margin-0 search-determine">
+		<button class="btn-look" type="button" ng-click="vm.look()">搜索</button>
+		<button class="btn-air btn-default" type="button" ng-click="vm.air()">清空</button>
+	</div>
+</div>
+</div>
+
+<!-- 搜索内容 -->
+<div class="row search-main" ng-hide="vm.towCode.totalItems == 0">
+        <div class="searchJob-content" ng-repeat="item in vm.plainJobList track by $index" ui-sref="home.jobDetails({id:item.id})">
+            <div class="col-sm-6 col-xs-9 searchJob-bor-rig">
+                <div class="peer"><div class="searchJob-name">{{ item.name }}</div><span class="searchJob-time">&ensp;&ensp;发布时间：{{ item.updateAt | date : 'yyyy-MM-dd HH:mm:ss' }}</span></div>
+                <div class="searchJob-exper">{{ item.compensation | compensationFilter }}</div>
+                <div class="searchJob-area">{{ item.province| region:vm.provinceCity }}
+                    / {{ item.education | educationFilter }}
+                    / {{ item.experience | experienceFilter }}</div>
+            </div>
+            <div class="col-sm-6 col-xs-3 searchJob-padlef">
+                <div class="col-sm-8 col-lg-9 col-xs-12 searchJob-inline">
+                    <div class="searchJob-name1">{{ item.companyName }}</div>
+                    <div class="searchJob-exper1">
+                        <span>{{ item.industryList[0].industry| industryFilter }}</span>
+         
+                    </div>
+                    <div class="searchJob-tag-container text-hidden">
+                        <span class="searchJob-tag" ng-repeat="x in item.tags track by $index">{{x}}</span>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-lg-3 col-xs-3 searchJob-img"><span></span><img class="searchJob-logo" ng-src="{{ item.logo }}"></div>
+            </div>
+        </div>
+        <div class="row">
+    	<div class="col-xs-12 page-config">
+    		<pagination size="vm.currentSize" page="vm.currentPage" total="vm.totalItems"></pagination>
+        </div>
+    </div>
+</div>
+<!-- 404页面 -->
+    <div class="row search-main error" ng-hide="vm.towCode.totalItems !== 0">
+    	<div class="error404">
+        <div class="no-find-img">
+                <img src="img/alient.png" alt="网速炸了别看了">
+            </div>
+            <div class="no-find-text">
+                <span style="font-size: 20px; color: #2b3d51">
+                    <strong>暂时没有符合该搜索条件的内容</strong>
+                </span><br>
+                <span style="font-size: 18px; color: #536a82">
+                    <strong>请重新修改搜索条件后再次进行搜索</strong>
+                </span>
+            </div>
+            </div>
+        <div class="row">
+           <div class="error-title col-xs-12">推荐职位</div>
+        </div>
+        <div class="row groom-page">
+            <div class="groom-content col-md-3 col-sm-6 col-xm-12" ng-repeat="item in vm.eliteJob track by $index"
+                 >
+                <div class="groom-head">
+                	<div class="groom-main">
+                    <div class="groom-logo"><img class="searchJob-logo" ng-src="{{ item.logo }}"><span class="middle-img-box"></span></div>
+                    <div class="groom-colu">
+                        <div class="groom-exper">{{ item.compensation | compensationFilter }}</div>
+                        <div class="groom-name">{{ item.name }}</div>
+                        <div class="groom-name">{{ item.companyName }}</div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row groom-blank"></div>
+    </div>
+

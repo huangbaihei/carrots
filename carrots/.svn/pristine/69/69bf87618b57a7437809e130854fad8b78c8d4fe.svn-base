@@ -1,0 +1,23 @@
+.backgroundSearch{
+	background: #f6f7f8;
+.search{
+	border-bottom: 2px solid #EB5255;
+	font-size: 18px;
+	.search-company{
+		display: inline-block;
+    	padding: 3px 20px;
+    	border-bottom: 0;
+    	cursor: pointer;
+	}
+	.search-position{
+		display: inline-block;
+    	padding: 3px 20px;
+    	border-bottom: 0;
+    	cursor: pointer;
+	}
+	.ischoose{
+		background: #fc2b47;
+    	color: #fff;
+	}
+}
+}

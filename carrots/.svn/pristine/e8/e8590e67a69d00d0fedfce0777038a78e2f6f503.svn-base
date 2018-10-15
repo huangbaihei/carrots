@@ -1,0 +1,30 @@
+.separate-page {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  padding-bottom: 60px;
+  font-size: 14px; }
+  .separate-page > li {
+    height: 79px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px; }
+    .separate-page > li:nth-of-type(1) input, .separate-page > li:nth-of-type(3) input {
+      height: 32px;
+      width: 50px;
+      text-align: center;
+      margin: 0 2px; }
+    .separate-page > li .pagination > li > a {
+      margin: 0 5px;
+      background: #f5f5f7;
+      color: #666666;
+      border-radius: 3px; }
+    .separate-page > li .pagination > .active > a {
+      background-color: #fc2b47;
+      border-color: #fc2b47;
+      color: white; }
+    .separate-page > li .pagination .disabled .ng-binding {
+      color: #cccccc !important; }
+
+/*# sourceMappingURL=pagination.css.map */
